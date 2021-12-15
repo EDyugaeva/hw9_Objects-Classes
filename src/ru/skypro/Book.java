@@ -13,10 +13,17 @@ public class Book {
         this.year = year;
     }
 
+       public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
     public String toString() {
         return "Название "+ name + " Автор: " + author + " Дата выхода " + year;
     }
-
 
     public boolean equals(Object other) {
         if (this.getClass() != other.getClass()) {
@@ -33,21 +40,13 @@ public class Book {
         return Objects.hash(name,author);
     }
 
-        public String getName() {
+    public String getName() {
         return name;
     }
 
 
     public Author getAuthor() {
         return author;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
     }
 
 
