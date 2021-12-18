@@ -29,11 +29,7 @@ public class Main {
 //      Печать массива
         printMassive(massiveBooks);
 
-        Library library = new Library(massiveBooks);
-//        System.out.println(library);
-
-
-    }
+       }
 
     public static boolean addBook(Book[] books, Book newBook) {
         for (int i = 0; i < books.length; i++) {
