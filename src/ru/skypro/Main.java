@@ -10,6 +10,8 @@ public class Main {
 //        Инициализация книг
         Book misery = new Book("Misery", king, 1990);
         Book lolita = new Book("Lolita", nabokov, 1955);
+        Book it = new Book("It", king, 1990);
+
 
 //      Изменение года
         misery.setYear(2015);
@@ -17,35 +19,43 @@ public class Main {
         Book[] massiveBooks = new Book[5];
         massiveBooks[0] = misery;
         massiveBooks[1] = lolita;
-//      Поиск пустого места, добавление новой книги
-        if (areEmptyBooks(massiveBooks)) {
-            massiveBooks[findEmpty(massiveBooks)] = new Book("It", king, 1990);
-        } else System.out.println("Нет места в массиве");
+
+        //      Поиск пустого места, добавление новой книги
+
+        addBook(massiveBooks, it);
+        addBook(massiveBooks, new Book("Mister Mersedes", king, 2018));
+
 
 //      Печать массива
-        for (int i = 0; i < massiveBooks.length; i++) {
-            System.out.println(massiveBooks[i]);
-        }
+        printMassive(massiveBooks);
+
+        Library library = new Library(massiveBooks);
+//        System.out.println(library);
 
 
     }
 
-    public static boolean areEmptyBooks(Book arr[]) {
-        int empty = findEmpty(arr);
-        if (empty >= 0) {
-            return true;
+    public static boolean addBook(Book[] books, Book newBook) {
+        for (int i = 0; i < books.length; i++) {
+            if (books[i] == null) {
+                books[i] = newBook;
+                return true;
+            } else {
+            }
         }
         return false;
     }
 
-    public static int findEmpty(Book arr[]) {
-        int empty = -1;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == null) {
-                empty = i;
-                return empty;
+    public static void printBook(Book book) {
+        System.out.println(book.getAuthor() + ": " + book.getName() + ": " + book.getYear());
+
+    }
+
+    public static void printMassive(Book[] books) {
+        for (int i = 0; i < books.length; i++) {
+            if (books[i] != null) {
+                printBook(books[i]);
             }
         }
-        return empty;
     }
 }
