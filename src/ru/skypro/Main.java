@@ -6,21 +6,46 @@ public class Main {
 //       Инициализация авторов
         Author king = new Author("Steven", "King");
         Author nabokov = new Author("Vladimir", "Nabokov");
-//        Author king2 = new Author("Steven2", "King");
 
 //        Инициализация книг
         Book misery = new Book("Misery", king, 1990);
-//        Book misery2 = new Book("Misery", king, 1990);
         Book lolita = new Book("Lolita", nabokov, 1955);
-        System.out.println(king);
-//        System.out.println("misery = " + misery);
 
-//        System.out.println(misery.equals(misery2));
-
-//         Изменение года
+//      Изменение года
         misery.setYear(2015);
 
+        Book[] massiveBooks = new Book[5];
+        massiveBooks[0] = misery;
+        massiveBooks[1] = lolita;
+//      Поиск пустого места, добавление новой книги
+        if (areEmptyBooks(massiveBooks)) {
+            massiveBooks[findEmpty(massiveBooks)] = new Book("It", king, 1990);
+        } else System.out.println("Нет места в массиве");
+
+//      Печать массива
+        for (int i = 0; i < massiveBooks.length; i++) {
+            System.out.println(massiveBooks[i]);
+        }
 
 
+    }
+
+    public static boolean areEmptyBooks(Book arr[]) {
+        int empty = findEmpty(arr);
+        if (empty >= 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public static int findEmpty(Book arr[]) {
+        int empty = -1;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == null) {
+                empty = i;
+                return empty;
+            }
+        }
+        return empty;
     }
 }
